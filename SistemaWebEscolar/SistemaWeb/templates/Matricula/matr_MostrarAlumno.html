@@ -1,0 +1,48 @@
+{% extends 'Plantilla/Header.html' %} {% block content %} 
+{% load staticfiles %}
+<div class="content container">
+		<!-- Titulos -->
+		<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+			<div style="text-indent: 10;"><p class="text-muted"> INFORMACION DE ALUMNO</p></div>
+		</div>
+		<!-- Fin Titulo -->
+
+		<br />
+	
+		&nbsp&nbsp Nombres: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input
+			class="inputText" type="text"
+			value="{{alumno.cepk_per.per_nombres}}">
+		&nbsp &nbsp&nbsp
+		 Apellidos:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input class="inputText" type="text"
+			value="{{alumno.cepk_per.per_apellpat}}  {{alumno.cepk_per.per_apellpat}}"> <br /> 
+		&nbsp&nbsp DNI:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input class="inputText" type="text"
+			value="{{alumno.cepk_per.per_dni}}"> &nbsp&nbsp&nbsp&nbsp
+		 Direccion:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input
+			class="inputText" type="text"
+			value="{{alumno.cepk_per.per_nomcalle}}"> <br /> 
+		&nbsp&nbsp Distrito:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input
+			class="inputText" type="text"
+			value="{{alumno.cepk_per.cepk_distrito.distr_nombre}}"> <br />
+		<br />
+		<br /> 
+		<div class="col-md-8">
+			<div style="padding-bottom: 20px; font-size: 15px;">
+				<p class="text-muted">DATOS DE LA MATRICULA</p>
+			</div>
+		
+		<form action="." method="post" class="post-form">
+		{% csrf_token %} {{ form.as_p }}
+		<button type="submit" class="save btn btn-primary" style="float:right;"
+			>Generar Matricula</button>
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-right: 20px;">Retroceder</button>
+	</form>
+</div>
+</div>
+
+{% endblock %}

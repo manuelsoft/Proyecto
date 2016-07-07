@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Probando mas</title>
+</head>
+<body>
+	<h1>MUESTRAME EL DISTRITO</h1>
+
+	<h1>{{distrito.cepk_distrito}}</h1>
+	<h1>{{distrito.distr_nombre}}</h1>
+	<h1>{{distrito.distr_provincia}}</h1>
+	<h1>{{distrito.distr_departamento}}</h1>
+
+	<h1>Cursillos</h1>
+
+	{% for curso in cursos %}
+	<a href="{% url "ver_curso" curso.cepk_cur  %}">
+		{{curso.cur_nombre}}</a>
+	<br /> {% endfor %}
+</body>
+</html>

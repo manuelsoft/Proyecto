@@ -1,0 +1,124 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>Sistema de Gestion Escolar</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"
+	type="text/css" />
+<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}"
+	type="text/css" />
+
+<link
+	href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'css/sistema.css' %}">
+
+<!--  
+<link type="text/javascript"
+	href="{% static 'js/jquery-1.12.3.min.js' %}">
+<link type="text/javascript"
+	href="{% static 'js/jquery.dataTables.min.js' %}">
+<link type="text/javascript"
+	href="{% static 'js/dataTables.bootstrap.min.js' %}">-->
+
+<script
+	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	
+<script
+	src="{% static 'js/jquery.min.js' %}"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="{% static 'js/bootstrap.min.js' %}"></script>
+	
+</head>
+<body>
+	<div class="page-header">
+		<h1>Sistema de Gestion Escolar</h1>
+	</div>
+	<div style="float: right;">
+		<form action="/login/" class="form-horizontal">
+			<button type="submit" class="btn btn-danger">x</button>
+		</form>
+	</div>
+
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="/inicio">Inicio</a></li>
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Calificaciones <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Generar</a></li>
+				<li><a href="#">Consultar</a></li>
+				<li><a href="#">Madificar</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Otros</a></li>
+			</ul></li>
+		<li role="presentation" class="active"><a class="dropdown-toggle"
+			data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+			aria-expanded="false"> Mantenimientos <span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/newGrado">Grados</a></li>
+				<li><a href="/newSeccion">Seccion</a></li>
+				<li><a href="/newAula">Aula</a></li>
+				<li><a href="/newPersona">Personas</a></li>
+				<li><a href="/newDistrito">Distrito</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Otros</a></li>
+			</ul></li>
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Operaciones <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+
+				<li><a href="/elegirProfesor">Asignar Profesor</a></li>
+				<li><a href="/newAsignarUsuarioPerfil">Asignar Usuario</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="/newAlumno">Alumnos</a></li>
+				<li><a href="/newProfesor">Profesores</a></li>
+				<li><a href="#">Tutores</a></li>
+				<li><a href="/newCurso">Curso</a></li>
+				<li><a href="/newUsuario">Usuarios</a></li>
+				<li><a href="/newPerfil">Perfiles</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Otros</a></li>
+			</ul></li>
+<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Consultas <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/cnsProfesorCurso">Profesor Asignado</a></li>
+				<li><a href="#">Tutor Asignado</a></li>
+				
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Otros</a></li>
+			</ul></li>
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Sesion <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Ayuda</a></li>
+				<li><a href="#">Configuracion</a></li>
+				<li><a href="#">Acerca de</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="/login">Cerrar Sesion</a></li>
+			</ul></li>
+	</ul>
+	<div style="height: 30px;"></div>
+	{% block content %} {% endblock %}
+	<div style="height: 70px;"></div>
+</body>
+</html>

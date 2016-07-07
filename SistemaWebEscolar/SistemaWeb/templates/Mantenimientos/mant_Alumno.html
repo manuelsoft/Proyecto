@@ -1,0 +1,37 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+	<div class="row">
+		<div class="col-md-8">
+
+			<div style="padding-bottom: 20px; font-size: 15px;">
+				<p class="text-muted">LISTA DE ALUMNOS</p>
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Alumno</th>
+						<th>Provincia</th>
+						<th>Departamento</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for alumno in posts %}
+					<tr>
+						<td class="active">{{alumno.cepk_alu}}</td>
+						<td class="success">{{alumno.alu_nhnos}}</td>
+						<td class="warning">{{alumno.alu_altura}}</td>
+					</tr>
+					{% endfor %}
+
+				</tbody>
+			</table>
+			<br />
+			<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

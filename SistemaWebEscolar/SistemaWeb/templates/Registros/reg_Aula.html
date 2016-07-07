@@ -1,0 +1,36 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+		
+
+<div style="padding-bottom:20px; font-size:15px;"><p class="text-muted">LISTA DE AULA</p></div>
+<table class="table table-striped">
+	<thead>
+    <tr>
+		<th>Pabellon</th>
+		<th>Estado</th>
+		<th>Capacidad</th> 
+	</tr>
+    </thead>
+		<tbody>
+		{% for aula in posts %}
+		<tr>		
+			<td class="active">{{aula.aul_pabellon}}</td>
+			<td class="success">{{aula.aul_estado}}</td>
+			<td class="warning">{{aula.aul_capacidad}}</td>
+		</tr>
+		{% endfor %}
+
+	</tbody>
+</table>
+<br />
+<div style="padding-bottom:20px; font-size:15px;"><p class="text-muted">INGRESE UN AULA</p></div>
+<form action="/newAula/" method="post" class="post-form">
+	{% csrf_token %}
+	{{ form.as_table }}
+	<button type="submit" class="save btn btn-default" style="margin-top:10px;">Registrar</button>
+	
+</form>
+{% endblock %}

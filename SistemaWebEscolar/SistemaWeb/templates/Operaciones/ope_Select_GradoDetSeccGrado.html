@@ -1,0 +1,53 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE SECCION</p></div>
+			</div>
+			<br/>
+			<!-- Fin Titulo -->	
+			Nivel: &nbsp &nbsp
+			<input class="inputText" type="text" value="{{seccion.secc_nombre}}">
+			&nbsp &nbsp
+			Tipo: &nbsp &nbsp
+			<input class="inputText" type="text" value="{{seccion.secc_tipo}}">
+
+<br />	
+<br />
+<div class="panel panel-default">
+	<div style="float:right;padding: 16px;">
+		<label for="kwd_search">Filtrar: &nbsp</label> <input type="text"
+		id="kwd_search" value=""
+		style="border: 1px solid #ccc; border-radius: 4px;" />
+	</div>
+		<div class="panel-heading">
+			<h5>SELECCIONE UN GRADO</h5>
+		</div>
+		<table class="table table-fixed">
+			<thead>
+				<tr>
+					<th class="col-xs-4">Nombre</th>
+					<th class="col-xs-4">Nivel</th>
+					<th class="col-xs-4">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for grado in grados %}
+				<tr>
+					<td class="col-xs-4">{{grado.grad_nombre}}</td>
+					<td class="col-xs-4">{{grado.grad_nivel}} </td>
+					<td class="col-xs-4"><a href="{% url "ver_grado" grado.cepk_grad  %}"><img
+							height="24" width="24" src="{% static 'images/select.png' %}"></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

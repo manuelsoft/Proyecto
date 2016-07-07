@@ -1,0 +1,41 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+	<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>CURSOS Y GRADO SECCION DISPONIBLES</h5>
+				</div>
+				<table id="my-table" class="table table-fixed">
+					<thead>
+						<tr>
+							<th class="col-xs-3">Curso</th>
+							<th class="col-xs-3">Grado</th>
+							<th class="col-xs-3">Seccion</th>
+							<th class="col-xs-3">Mostrar Detalle</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						{% for det in listaDet %}
+						<tr>
+							<td class="col-xs-3">{{det.cepk_cur.cur_nombre}}</td>
+							<td class="col-xs-3">{{det.cepk_gradsec.cepk_grad.grad_nombre}} {{det.cepk_gradsec.cepk_grad.grad_nivel}}</td>
+							<td class="col-xs-3">{{det.cepk_gradsec.cepk_secc.secc_nombre}}</td>
+							<td class="col-xs-3"><div style="margin-left: 10px;"><a href="{% url "cns_CursoGradSecc" det.cepk_detgrcur  %}"><img
+									height="24" width="24" src="{% static 'images/buscar.jpg' %}"></div></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+			</div>			
+			<br />
+
+		<label for="kwd_search">Buscar: &nbsp</label> 
+	<input type="text" id="kwd_search" value="" style="border: 1px solid #ccc;border-radius: 4px;"/>
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+			</div>
+{% endblock %}

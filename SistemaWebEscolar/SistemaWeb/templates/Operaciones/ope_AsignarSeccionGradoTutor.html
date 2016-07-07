@@ -1,0 +1,68 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+
+			<div class="col-md-15" >
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION DEL TUTOR</p></div>
+			</div>
+			<br/>
+			<!-- Fin Titulo -->
+			&nbsp&nbsp
+			Nombres : &nbsp<input
+			class="inputText" type="text"
+			value="{{tutor.cepk_per.per_nombres}} {{tutor.cepk_per.per_apellpat}}">
+			&nbsp&nbsp&nbsp
+			&nbsp&nbsp
+			Especialidad : &nbsp <input
+			class="inputText" type="text"
+			value="{{tutor.tut_especialidad}}">
+			
+			
+		<br /><br />
+
+			</div>
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION DEL GRADO-SECCION</p></div>
+			</div>
+			<br/>
+			<!-- Fin Titulo -->
+			&nbsp&nbsp
+			Grado : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{gradsec.cepk_grad.grad_nombre}}">
+			&nbsp&nbsp&nbsp
+			&nbsp&nbsp
+			Nivel : &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value=" {{gradsec.cepk_grad.grad_nivel}}">			
+
+			<br/>
+			&nbsp
+			&nbspSeccion: &nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{gradsec.cepk_secc.secc_nombre}}">
+			<br />
+			
+
+<br />
+<form action="/AsignarTutor/" style="float:right;" >
+	<div class="form-group">
+		 <div class="col-sm-offset-2 col-sm-10">
+ 		<button type="submit" class="btn btn-danger">Aceptar</button>
+ 	  </div>
+	</div>
+</form>
+<form action="/elegirTutor/" style="float:right;">
+ 	<div class="form-group">
+		     <button type="submit" class="btn btn-default">Cancelar</button>
+		  
+	</div>
+
+</form>
+
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+			<div style="text-indent:8; font-size: 16px;"><p class="text-muted">INFORMACION DEL ALUMNO</p></div>
+			<br />
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION PERSONAL</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			<br />&nbsp
+			Nombres: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{alumno.cepk_per.per_nombres}}">
+			&nbsp &nbsp&nbsp&nbsp
+			Apellidos:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{alumno.cepk_per.per_apellpat}} {{alumno.cepk_per.per_apellmat}}">
+			<br/>&nbsp
+			DNI: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{alumno.cepk_per.per_dni}}">
+			&nbsp&nbsp&nbsp&nbsp
+			Telofono: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{alumno.cepk_per.per_telf}}">
+			<br />&nbsp
+			Direccion: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{alumno.cepk_per.per_nomcalle}}">
+			&nbsp&nbsp&nbsp&nbsp
+			Distrito: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{alumno.cepk_per.cepk_distrito.distr_nombre}}">
+			<br /><br />
+			
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">MATRICULA ACTUAL</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			{% if flag == False %}
+				<h5 style=" text-indent:5; margin-top:20;margin-bottom:20 ">
+					No tiene Matricula Activa..</h5>
+			{% endif %}
+			{% if flag %}
+				<br />&nbsp
+				Grado: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				<input class="inputText" type="text" value="{{matricula.cepk_gradsec.cepk_grad.grad_nombre}}">
+				&nbsp&nbsp
+				Nivel Grado: &nbsp&nbsp &nbsp &nbsp &nbsp
+				<input class="inputText" type="text" value="{{matricula.cepk_gradsec.cepk_grad.grad_nivel}}">
+				<br/>&nbsp
+				Seccion: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				<input class="inputText" type="text" value="{{matricula.cepk_gradsec.cepk_secc.secc_nombre}}">
+				&nbsp
+				Estado:
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input class="inputText" type="text" value="{{matricula.matr_estado}}" style="background-color:skyblue;">
+				<br/>&nbsp
+				Observacion: &nbsp &nbsp &nbsp &nbsp&nbsp
+				<input class="inputTextObservacion" type="text" value="{{matricula.matr_observacion}}">
+			{% endif %}
+			<br/><br/>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>LISTA DE MATRICULAS REGISTRADAS</h5>
+				</div>
+				{% if flagLista == False %}
+					<h5 style=" text-indent:15; margin-top:20;margin-bottom:20 ">
+					No tiene Ninguna Matriculas Registradas..</h5>
+				{% endif %}
+				
+				{% if flagLista %}
+					<table id="my-table" class="table table-fixed">
+						<thead>
+							<tr>
+								<th class="col-xs-2">Grado</th>
+								<th class="col-xs-2">Nivel</th>
+								<th class="col-xs-2">Seccion</th>
+								<th class="col-xs-2">Fecha Matricula</th>
+								<th class="col-xs-2">Estado Matricula</th>
+								<th class="col-xs-2">Edad Alumno</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for det in listaMatricula %}
+							<tr>
+								<td class="col-xs-2">{{det.cepk_gradsec.cepk_grad.grad_nombre}}</td>
+								<td class="col-xs-2">{{det.cepk_gradsec.cepk_grad.grad_nivel}}</td>
+								<td class="col-xs-2">{{det.cepk_gradsec.cepk_secc.secc_nombre}} </td>
+								<td class="col-xs-2">{{det.matr_fecha}}</td>
+								<td class="col-xs-2">{{det.matr_estado}}</td>
+								<td class="col-xs-2">{{det.matr_edadalumno}}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% endif %}
+			</div>	
+			
+<br />
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 0px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

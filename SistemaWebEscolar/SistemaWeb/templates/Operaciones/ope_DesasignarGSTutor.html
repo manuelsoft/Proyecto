@@ -1,0 +1,71 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+
+		<!-- Titulos -->
+		<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px; width: 220px;">
+			<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE TUTOR</p></div>
+		</div>
+		<!-- Fin Titulo -->
+		<br />
+		Nombres: &nbsp &nbsp &nbsp &nbsp &nbsp
+		<input class="inputText" type="text" value="{{tutor.cepk_per.per_nombres}}">
+		&nbsp &nbsp &nbsp
+		Apellidos:&nbsp &nbsp &nbsp &nbsp &nbsp
+		<input class="inputText" type="text" value="{{tutor.cepk_per.per_apellpat}} {{tutor.cepk_per.per_apellmat}}">
+		<br />
+		Especialidad:
+		&nbsp &nbsp
+		<input class="inputText" type="text" value="{{tutor.tut_especialidad}}" style="background-color:gray;">
+		
+		<br /><br />
+	
+	
+	<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>GRADO-SECCION ASIGNADO</h5>
+				</div>
+				{% if flag %}
+					<h5 style=" text-indent:15; margin-top:20;margin-bottom:20 ">
+					No tiene un grado-seccion asignado..</h5>
+				{% endif %}
+			{% if flag == False %}
+			<br />&nbsp&nbsp
+			Grado: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<input
+			class="inputText" type="text"
+			value="{{GST.cepk_gradsec.cepk_grad.grad_nombre}}">
+			&nbsp&nbsp&nbsp
+			&nbsp&nbsp
+			Nivel : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp<input
+			class="inputText" type="text"
+			value=" {{GST.cepk_gradsec.cepk_grad.grad_nivel}}">			
+			
+			<br/>
+			&nbsp&nbsp
+			&nbspSeccion: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{GST.cepk_gradsec.cepk_secc.secc_nombre}}">
+			<br />
+			<br />
+			{% endif %}
+			</div>	
+	
+	
+			<br />
+			
+	{% if flag == False %}
+	<form action="/DesasignarGST/{{GST.cepk_detgrtut}}" style="float:right;" >
+	<div class="form-group">
+		 <div class="col-sm-offset-2 col-sm-10">
+ 		<button type="submit" class="btn btn-danger">Desasignar</button>
+ 	  </div>
+	</div>
+    </form>
+	{% endif %}
+	
+	<form method="post" class="post-form" >
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

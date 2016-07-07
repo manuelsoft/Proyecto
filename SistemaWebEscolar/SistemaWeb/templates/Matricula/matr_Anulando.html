@@ -1,0 +1,84 @@
+{% extends 'Plantilla/Header.html' %} {% block content %} 
+{% load staticfiles %}
+<div class="content container">
+	
+		<!-- Titulos -->
+		<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+			<div style="text-indent: 10;"><p class="text-muted"> INFORMACION DE ALUMNO</p></div>
+		</div>
+		<!-- Fin Titulo -->
+	
+		<br />
+		Nombres: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input
+			class="inputText" type="text"
+			value="{{alumno.cepk_per.per_nombres}} {{alumno.cepk_per.per_apellpat}}">
+		&nbsp &nbsp&nbsp
+		Apellidos: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input class="inputText" type="text"
+			value="{{alumno.cepk_per.per_apellpat}}"> <br /> 
+		DNI:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input class="inputText" type="text"
+			value="{{alumno.cepk_per.per_dni}}"> &nbsp&nbsp&nbsp&nbsp
+		 Direccion:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input
+			class="inputText" type="text"
+			value="{{alumno.cepk_per.per_nomcalle}}"> <br /> 
+		 Distrito:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input
+			class="inputText" type="text"
+			value="{{alumno.cepk_per.cepk_distrito.distr_nombre}}">
+			&nbsp&nbsp&nbsp&nbsp
+		 Estado:
+		 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		 <input class="inputText" type="text" style="background-color:#ccc;"
+			value="{{alumno.alu_estado}}"> <br />
+		<br />
+		
+		<!-- Titulos -->
+		<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+			<div style="text-indent: 10;"><p class="text-muted"> INFORMACION DE MATRICULA</p></div>
+		</div>
+		<br /> 
+		<!-- Fin Titulo -->
+		 Fecha: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input
+			class="inputText" type="text"
+			value="{{matricula.matr_fecha}}">
+		&nbsp &nbsp&nbsp
+	
+		 Grado:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input class="inputText" type="text"
+			value="{{matricula.cepk_gradsec.cepk_grad.grad_nombre}}"> &nbsp&nbsp&nbsp&nbsp
+			<br /> 
+			 Nivel:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input
+			class="inputText" type="text"
+			value="{{matricula.cepk_gradsec.cepk_grad.grad_nivel}}"> 
+		 &nbsp&nbsp&nbsp&nbsp
+		 Seccion:
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{matricula.cepk_gradsec.cepk_secc.secc_nombre}}"> 
+		<br /> 
+			 Estado:  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			 <input
+			class="inputText" type="text" style="background-color:#ccc;"
+			value="{{matricula.matr_estado}}">
+		<br />
+		<br /> 
+		<form action="/Anulalo/{{alumno.cepk_alu}}/{{matricula.cepk_matr}}/" class="post-form" style ="margin-right: 210px;float: right;">
+		<button type="submit" class="save btn btn-danger" style="float:right;">
+		Anular Matricula</button>
+		
+	</form>
+		<form method="post" class="post-form" style="margin-right:20px; float: right;">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 0px;">Retroceder</button>
+	</form>
+	
+	</div>
+<br />	
+
+{% endblock %}

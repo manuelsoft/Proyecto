@@ -1,0 +1,22 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+	<div class="row">
+		<div class="col-md-8">
+			
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INGRESE DATOS DEL CURSO</p></div>
+			</div>
+			<br/>
+			<!-- Fin Titulo -->
+			<form action="/REG/Curso/" method="post" class="post-form">
+				{% csrf_token %} {{ form.as_table }}
+				<button type="submit" class="save btn btn-default"
+					style="margin-top: 10px;">Registrar</button>
+
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

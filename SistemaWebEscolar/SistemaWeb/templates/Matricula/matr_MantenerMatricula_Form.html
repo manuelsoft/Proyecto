@@ -1,0 +1,23 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+	<div class="row">
+		<div class="col-md-8">
+
+			<div style="padding-bottom: 20px; font-size: 15px;">
+				<p class="text-muted">ACTUALICE LOS CAMPOS QUE DESEA</p>
+			</div>
+			
+			<form action="." method="post" class="post-form">
+				{% csrf_token %} {{ form.as_table }}
+				<button type="submit" class="save btn btn-primary"
+					style="margin-top: 10px;">Aceptar</button>
+				<button type="submit" class="save btn btn-default"
+				onClick="history.go(-1);return true;" 
+				style="margin-top: 10px; margin-right:20px;">Retroceder</button>
+			</form>
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+
+			<div class="col-md-15" >
+		<!-- .per_apellpat -->
+			<div style="border:2px solid #ccc; border-radius:8px;padding-top: 8px;">
+
+			<div style="text-indent: 10;"><p class="text-muted"">INFORMACION DE CURSO</p></div>
+			</div>
+			<br />
+			&nbsp&nbsp
+			Nombre: &nbsp<input
+			class="inputText" type="text"
+			value="{{curso.cur_nombre}}">
+			&nbsp&nbsp&nbsp
+			&nbsp&nbsp
+			Estado : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp
+			<input
+			class="inputText" type="text"
+			value="{{curso.cur_testado}}">
+			
+			
+		<br />
+
+	
+<br />
+<div style="border:2px solid #ccc;border-radius:8px;padding-top: 8px;">
+
+<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE GRADO SECCION</p></div>
+			</div>
+		
+			<br />&nbsp&nbsp
+			Curso : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{seccGrad.cepk_grad.grad_nombre}}">
+			&nbsp&nbsp&nbsp
+			&nbsp&nbsp
+			Nivel : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{seccGrad.cepk_grad.grad_nivel}}">
+			
+			<br/>
+			&nbsp&nbsp
+			Seccion:&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value=" {{seccGrad.cepk_secc.secc_nombre}}">
+			&nbsp&nbsp&nbsp&nbsp&nbsp
+			Tipo Secc: &nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{seccGrad.cepk_secc.secc_tipo}}">
+			
+			<br />
+			
+
+<br />
+</div>
+<!-- Titulos -->
+<div style="border:2px solid #ccc;border-radius:8px;padding-top: 8px;">
+	<div style="text-indent: 10;"><p class="text-muted">DETALLE</p></div>
+</div>
+<!-- Fin Titutlo -->
+<br />
+<div class="col-md-4" >
+<form action="." method="post" class="post-form">
+				{% csrf_token %} {{form.as_p}}
+				<button type="submit" class="save btn btn-primary"
+					style="margin-top: 10px; float:left;">Confirmar</button>
+
+			</form>
+</div>
+<br />
+</div><br />
+{% endblock %}

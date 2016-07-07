@@ -1,0 +1,198 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>Sistema de Gestion Escolar</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}"type="text/css" />
+<link rel="stylesheet" href="{% static 'css/sistema.css' %}">
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'JQuery/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+	<div class="page-header"style="float: left;width: 100%;">
+		<img alt=""  style="float: left;"width="110" height="110" src="{% static 'images/logounmsm.png' %}">
+		<h1 class="texto">Sistema de Gestion Escolar </h1>
+	</div>
+	
+	<ul class="nav nav-tabs"  style="float: left;width: 100%;">
+		<li  role="presentation" ><a href="/inicio"  >Inicio</a></li>
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Matricula <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				{% if 'SistemaWeb.add_cematricula' in Permisos %}
+					<li><a href="/IniciarMatricula">Generar</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.delete_cematricula' in Permisos %}
+					<li><a href="/AnularMatricula">Anular</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.change_cematricula' in Permisos %}
+					<li><a href="/MantenerMatricula">Mantener</a></li>
+				{% endif %}
+			</ul></li>
+		
+		<li role="presentation"class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Registros <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				{% if 'SistemaWeb.add_ceprofesor' in Permisos %}
+				<li><a href="/REG/DatosPersProfesor">Profesores</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.add_cetutor' in Permisos %}
+				<li><a href="/REG/DatosPersTutor">Tutores</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.add_cecurso' in Permisos %}
+				<li><a href="/REG/Curso/">Curso</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.add_ceseccion' in Permisos %}
+				<li><a href="/REG/Seccion/">Seccion</a></li>
+				{% endif %}
+				{% if 'auth.add_user' in Permisos %}
+				<li role="separator" class="divider"></li>
+				<li><a href="/REG/Usuario">Usuario</a></li>
+				{% endif %}
+			</ul></li>
+				
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Operaciones <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				{% if 'SistemaWeb.estado_profesor' in Permisos %}
+				<li><a href="/OPE/Profesor/">Estado Profesor</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.asignar_profesorCurso' in Permisos %}
+				<li><a href="/elegirProfesor">Asignar Profesor</a></li>
+				{% endif %}
+				<li><a href="/ListaProfesorDesCur">Desasignar Profesor</a></li>
+				{% if 'SistemaWeb.estado_tutor' in Permisos %}
+				<li role="separator" class="divider"></li>
+				
+				<li><a href="/OPE/Tutor">Estado Tutor</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.asignar_tutorAula' in Permisos %}
+				<li><a href="/elegirTutor">Asignar Tutor</a></li>
+				{% endif %}
+				<li><a href="/ListaTutorDesGS">Desasignar Tutor</a></li>
+				{% if 'SistemaWeb.asignar_seccGrad' in Permisos %}
+				<li role="separator" class="divider"></li>
+				
+				<li><a href="/elegirSeccion_DSG/">Generar Seccion Grado</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.asignar_cursoSeccGrad' in Permisos %}
+				<li><a href="/OPE/Curso_DCSG/">Generar Curso Seccion Grado</a></li>
+				{% endif %}
+			</ul></li>
+		<li role="presentation"class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Mantenimientos <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				{% if 'SistemaWeb.change_ceprofesor' in Permisos %}
+				<li><a href="/MAN/Profesor">Profesores</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.change_cetutor' in Permisos %}
+				<li><a href="/MAN/Tutor">Tutores</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.change_cecurso' in Permisos %}
+				<li><a href="/MAN/Curso">Curso</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.change_ceseccion' in Permisos %}
+				<li><a href="/MAN/Seccion">Seccion</a></li>
+				{% endif %}
+			</ul></li>
+			
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Consultas <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				{% if 'SistemaWeb.consultar_cealumno' in Permisos %}
+				<li><a href="/CNS/Alumno/">Alumnos</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.consultar_ceprofesor' in Permisos %}
+   				<li><a href="/CNS/Profesor">Profesores</a></li>
+   				{% endif %}
+   				{% if 'SistemaWeb.consultar_cetutor' in Permisos %}
+				<li><a href="/CNS/Tutor">Tutores</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.consultar_ceGradSecc' in Permisos %}
+				<li><a href="/CNS/Cuso_GradoSeccion">Curso GradSecc</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.consultar_ceProfCur' in Permisos %}
+				<li role="separator" class="divider"></li>
+				<li><a href="/CNS/cns_ProfesorCurso/">Profesor Asignado</a></li>
+				{% endif %}
+				{% if 'SistemaWeb.consultar_ceTutorAsignado' in Permisos %}
+				<li><a href="/CNS/cns_TutorGradSec">Tutores Asignado</a></li>
+				{% endif %}
+				{% if 'auth.consultar_ceusuario' in Permisos %}
+				<li role="separator" class="divider"></li>
+				<li><a href="/CNS/Usuario/">Usuario</a></li>
+				{% endif %}
+			</ul></li>
+			
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Sesion <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Ayuda</a></li>
+				<li><a href="#">Configuracion</a></li>
+				<li><a href="#">Acerca de</a></li>
+				<li role="separator" class="divider" ></li>
+				<li><a href="/login">Cerrar Sesion</a></li>
+			</ul></li>
+			<div style="float: right;">
+				<form action="/logout/" class="form-horizontal">
+				<output style="float:left;margin-right:10px; ">Cerrar Sesion</output><button type="submit" class="btn btn-danger">X</button>
+				</form>
+			</div>
+	</ul>
+	
+	<div style="height:30px;"></div>
+	<div style="float:left;">
+		<div style="height:30px;"></div>
+	{% block content %} {% endblock %}
+	</div>
+<div style="height:20px; width:100%;float:right;"></div>
+<script>
+$(document).ready(function(){
+	// Write on keyup event of keyword input element
+	$("#kwd_search").keyup(function(){
+		// When value of the input is not blank
+		if( $(this).val() != "")
+		{
+			// Show only matching TR, hide rest of them
+			$("#my-table tbody>tr").hide();
+			$("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
+		}
+		else
+		{
+			// When there is no input or clean again, show everything back
+			$("#my-table tbody>tr").show();
+		}
+	});
+});
+// jQuery expression for case-insensitive filter
+$.extend($.expr[":"], 
+{
+    "contains-ci": function(elem, i, match, array) 
+	{
+		return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+	}
+});
+</script>
+</body>
+</html>

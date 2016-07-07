@@ -1,0 +1,50 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+
+	<div class="panel panel-default">
+	<div style="float:right;padding: 16px;">
+	<label for="kwd_search">Filtrar: &nbsp</label> <input type="text"
+		id="kwd_search" value=""
+		style="border: 1px solid #ccc; border-radius: 4px;" />
+	</div>
+		<div class="panel-heading">
+			<h5>LISTA DE PROFESORES</h5>
+		</div>
+		<table id="my-table" class="table table-fixed">
+			<thead>
+				<tr>
+					<th class="col-xs-3">Nombre</th>
+					<th class="col-xs-3">Especialidad</th>
+					<th class="col-xs-3">Grado Academico</th>
+					<th class="col-xs-3">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for profesor in profesores %}
+				<tr>
+					<td class="col-xs-3">{{profesor.cepk_per.per_nombres}}&nbsp{{profesor.cepk_per.per_apellpat}}</td>
+					<td class="col-xs-3">{{profesor.prof_especialidad}}</td>
+					<td class="col-xs-3">
+					<!-- |add:0 Es necesario para comprara los String -->
+					{% for grados in gradosAcad %} 
+						{% if grados.cat_secundario == profesor.porf_gacademico|add:0  %}
+							{{grados.cat_descripcion}}
+						{% endif %}
+					{% endfor %}
+					</td>
+					<td class="col-xs-3"><a href="{% url "opeProfesor" profesor.cepk_prof  %}"><img
+							height="24" width="24" src="{% static 'images/select.png' %}"></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

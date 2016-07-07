@@ -1,0 +1,44 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+	<div class="row">
+		<div class="col-md-8">
+
+
+			<div style="padding-bottom: 20px; font-size: 15px;">
+				<p class="text-muted">LISTA DE PERSONAS</p>
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Dni</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for persona in posts %}
+					<tr>
+						<td class="active">{{persona.per_nombres}}</td>
+						<td class="success">{{persona.per_apellpat}}&nbsp{{persona.per_apellmat}}</td>
+						<td class="warning">{{persona.per_dni}}</td>
+					</tr>
+					{% endfor %}
+
+				</tbody>
+			</table>
+			<div style="padding-bottom: 20px; font-size: 15px;">
+				<p class="text-muted">GESTION DE PERSONAS</p>
+			</div>
+			<form action="/newPersona/" method="post" class="post-form">
+				{% csrf_token %} {{form.as_p}}
+				<button type="submit" class="save btn btn-default"
+					style="margin-top: 10px;">Registrar</button>
+
+			</form>
+			<br />
+		</div>
+	</div>
+</div>
+
+{% endblock %}

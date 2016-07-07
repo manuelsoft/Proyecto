@@ -1,0 +1,31 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h5>LISTA DE USUARIOS</h5>
+		</div>
+		<table class="table table-fixed">
+			<thead>
+				<tr>
+					<th class="col-xs-4">Nombre</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for profesor in profesores %}
+				<tr>
+					<td class="col-xs-4">{{profesor}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

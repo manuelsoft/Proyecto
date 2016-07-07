@@ -1,0 +1,101 @@
+ {% extends 'Plantilla/base.html' %} {% block content %}
+
+	<ul class="nav nav-tabs">
+		<li role="presentation" ><a href="/inicio">Inicio</a></li>
+		<li role="presentation" class="active"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Asistencia <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/newCalificaciones">Generar</a></li>
+				<li><a href="#">Consultar</a></li>
+				<li><a href="#">Madificar</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Otros</a></li>
+			</ul></li>
+		<li role="presentation"class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Mantenimientos <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/newGrado">Grados</a></li>
+				<li><a href="/newSeccion">Seccion</a></li>
+				<li><a href="/newAula">Aula</a></li>
+				<li><a href="/newPersona">Personas</a></li>
+				<li><a href="/newDistrito">Distrito</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Otros</a></li>
+			</ul></li>
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Operaciones <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="/newAlumno">Alumnos</a></li>
+				<li><a href="#">Profesores</a></li>
+				<li><a href="#">Tutores</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Otros</a></li>
+			</ul></li>
+			
+		<li role="presentation" class="dropdown"><a
+			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			aria-haspopup="true" aria-expanded="false"> Sesion <span
+				class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Ayuda</a></li>
+				<li><a href="#">Configuracion</a></li>
+				<li><a href="#">Acerca de</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="/login">Cerrar Sesion</a></li>
+			</ul></li>
+	</ul>
+		<div style="float: right;">
+		<form action="/login/" class="form-horizontal">
+			<button type="submit" class="btn btn-danger">x</button>
+		</form>
+	</div>
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+		
+	<div style="height:30px;">
+	</div>
+
+<div style="padding-bottom:20px; font-size:15px;"><p class="text-muted">LISTA DE DISTRITOS</p></div>
+<table class="table table-striped">
+	<thead>
+    <tr>
+		<th>Distrito</th>
+		<th>Provincia</th>
+		<th>Departamento</th> 
+	</tr>
+    </thead>
+		<tbody>
+		
+		<tr>	{% for distrito in posts %}	
+			<td class="active">{{distrito.distr_nombre}}</td>
+			<td class="success">{{distrito.distr_provincia}}</td>
+			<td class="warning">{{distrito.distr_departamento}}</td>
+			
+		{% endfor %}
+		</tr>
+
+	</tbody>
+</table>
+<br />
+<div style="padding-bottom:20px; font-size:15px;"><p class="text-muted">INGRESE UN DISTRITO</p></div>
+<form action="/newDistrito/" method="post" class="post-form">
+	{% csrf_token %}
+	{{ form.as_table }}
+	<button type="submit" class="save btn btn-default" style="margin-top:10px;">Registrar</button>
+	
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+
+		
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION DEL TUTOR</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			<br/>
+			Nombres: &nbsp &nbsp
+			<input class="inputText" type="text" value="{{tutor.cepk_per.per_nombres}} {{tutor.cepk_per.per_apellpat}}">
+			&nbsp &nbsp
+			Especialidad: &nbsp &nbsp
+			<input class="inputText" type="text" value="{{tutor.tut_especialidad}}">
+
+<br />	
+<br />
+<div class="panel panel-default">
+		<div style="float:right;padding: 16px;">
+	<label for="kwd_search">Filtrar: &nbsp</label> <input type="text"
+		id="kwd_search" value=""
+		style="border: 1px solid #ccc; border-radius: 4px;" />
+	</div>
+		<div class="panel-heading">
+			<h5>SELECCIONE UN GRADO - SECCION</h5>
+		</div>
+		<table id="my-table" class="table table-fixed">
+			<thead>
+				<tr>
+					<th class="col-xs-3">Grado</th>
+					<th class="col-xs-3">Seccion</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				{% for gradsecc in gradsecc %}
+				<tr>
+				
+					<td class="col-xs-3">{{gradsecc.cepk_grad.grad_nombre}} {{gradsecc.cepk_grad.grad_nivel}} </td>
+					<td class="col-xs-3">{{gradsecc.cepk_secc.secc_nombre}}</td>
+					<td class="col-xs-3"><a href="{% url "ver_gradsecc" gradsecc.cepk_gradsec  %}"><img
+							height="24" width="24" src="{% static 'images/go.png' %}"></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

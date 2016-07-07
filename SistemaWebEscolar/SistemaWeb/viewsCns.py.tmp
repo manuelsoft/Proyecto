@@ -1,0 +1,74 @@
+'''
+Created on 9 de jun. de 2016
+
+@author: Rottweilas
+'''
+from _datetime import timezone
+from _overlapped import NULL
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.context_processors import request, csrf
+from django.http import HttpResponse
+from django.http.response import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render_to_response, render, \
+    redirect
+from django.template import loader, Context
+
+from SistemaWeb.forms import GradoForm, SeccionForm, AulaForm, AsistenciaForm, \
+    CursoForm, PerfilForm, UsuarioForm
+from SistemaWeb.models import Distrito, Persona, CeAlumno, CeGrado, CeSeccion, CeDetGradsecCurso, \
+    CeAula, CeAsistencia, CeCurso, CeProfesor, CeDetProfcurso, CePerfil, \
+    CeUsuario, CeTutor
+from django.contrib.auth.decorators import permission_required
+
+from .forms import PostForm, DistritoForm, PersonaForm, ProfesorForm, AlumnoForm, CursoProfesorForm
+
+
+@login_required
+@permission_required('SistemaWeb.add_cealumno')
+def cnsProfesor(request):
+    
+    profesor  = CeProfesor.objects.order_by('porf_gacademico')
+    mi_contexto = Context({'profesores':profesor})
+    return render_to_response('Consultas/cns_Profesor.html',mi_contexto)  
+
+@login_required
+def cnsTutor(request):
+    tutores = CeTutor.objects.order_by('tut_especialidad')
+    mi_contexto = Context({'tutores':tutores})
+    
+    return render_to_response('Consultas/cns_Tutor.html',mi_contexto) 
+
+@login_required
+def cns_Profesor(request,profesor_id):
+    profesor  = get_object_or_404(CeProfesor,cepk_prof = profesor_id)
+    mi_contexto = Context({'profesor':profesor})
+    
+    return render_to_response('Consultas/cns_DatosProfesor.html',mi_contexto)
+
+@login_required
+def cns_Tutor(request,tutor_id):
+    tutor = get_object_or_404(CeTutor,cepk_tut = tutor_id)
+    mi_contexto = Context({'tutor':tutor})
+    
+    return render_to_response('Consultas/cns_DatosTutor.html',mi_contexto)  
+
+
+@login_required
+def cnsAlumno(request):
+    alumno  = CeAlumno.objects.order_by('cepk_alu')
+    mi_contexto = Context({'alumnos':alumno})
+
+    return render_to_response('Consultas/cns_Alumno.html',mi_contexto)    
+
+@login_required
+def cnsUsuario(request):
+    
+    usuarios  = User.objects.all()
+    mi_contexto = Context({'profesores':usuarios})
+
+    return render_to_response('Consultas/cns_Usuario.html',mi_contexto) 
+
+
+    

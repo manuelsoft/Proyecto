@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<title>Probando mas</title>
+	</head>
+	<body>
+		
+		{% for distrito in distritos %}
+			<a href="{% url "ver_distrito" distrito.cepk_distrito  %}"> {{distrito.distr_nombre}}</a><br/>
+		{% endfor %}	
+	</body>
+</html>

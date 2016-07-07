@@ -1,0 +1,38 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+	<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>ELIGA UN TUTOR PARA VER SU GRADO-SECCION ASIGNADO</h5>
+				</div>
+				<table id="my-table" class="table table-fixed">
+					<thead>
+						<tr>
+							<th class="col-xs-4">Nombre</th>
+							<th class="col-xs-4">Especialidad</th>
+							<th class="col-xs-4">Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for tutor in tut %}
+						<tr>
+							<td class="col-xs-4">{{tutor.cepk_per.per_nombres}}&nbsp{{tutor.cepk_per.per_apellpat}}</td>
+							<td class="col-xs-4">{{tutor.tut_especialidad}}</td>
+							<td class="col-xs-4"><div style="margin-left: 10px;"><a href="{% url "tutorGradSec" tutor.cepk_tut  %}"><img
+									height="24" width="24" src="{% static 'images/buscar.jpg' %}"></div></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+			</div>			
+			<br />
+
+		<label for="kwd_search">Buscar: &nbsp</label> 
+	<input type="text" id="kwd_search" value="" style="border: 1px solid #ccc;border-radius: 4px;"/>
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+			</div>
+{% endblock %}

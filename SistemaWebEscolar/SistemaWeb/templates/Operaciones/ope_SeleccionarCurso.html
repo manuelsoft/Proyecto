@@ -1,0 +1,61 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+<div style="padding-bottom: 20px; font-size: 15px;">
+			
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px; width: 250px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE PROFESOR</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			</div>
+			Nombres: &nbsp &nbsp
+			<input class="inputText" type="text" value="{{profesor.cepk_per.per_nombres}} {{profesor.cepk_per.per_apellpat}}">
+			&nbsp &nbsp
+			Especialidad: &nbsp &nbsp
+			<input class="inputText" type="text" value="{{profesor.prof_especialidad}}">
+
+<br />	
+<br />
+<div class="panel panel-default">
+		<div style="float:right;padding: 16px;">
+	<label for="kwd_search">Filtrar: &nbsp</label> <input type="text"
+		id="kwd_search" value=""
+		style="border: 1px solid #ccc; border-radius: 4px;" />
+	</div>
+		<div class="panel-heading">
+			<h5>SELECCIONE UN CURSO</h5>
+		</div>
+		<table id="my-table" class="table table-fixed">
+			<thead>
+				<tr>
+					<th class="col-xs-2">Curso</th>
+					<th class="col-xs-2">Grado</th>
+					<th class="col-xs-2">Nivel</th>
+					<th class="col-xs-2">Seccion</th>
+					<th class="col-xs-2">Asignacion</th>
+					<th class="col-xs-2">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for curso in cursos %}
+				<tr>
+					<td class="col-xs-2">{{curso.cepk_cur.cur_nombre}}</td>
+					<td class="col-xs-2">{{curso.cepk_gradsec.cepk_grad.grad_nombre}}</td>
+					<td class="col-xs-2"><div style="text-indent: 5;">{{curso.cepk_gradsec.cepk_grad.grad_nivel}}</div> </td>
+					<td class="col-xs-2"><div style="text-indent: 10;">{{curso.cepk_gradsec.cepk_secc.secc_nombre}}</div></td>
+					<td class="col-xs-2"><div style="text-indent: 10;">{{curso.det_asig}}</div></td>
+					<td class="col-xs-2"><div style="text-indent: 30;"><a href="{% url "ver_curso2" curso.cepk_detgrcur  %}"><img
+							height="24" width="24" src="{% static 'images/select.png' %}"></div></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

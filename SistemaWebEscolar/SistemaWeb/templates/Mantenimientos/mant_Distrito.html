@@ -1,0 +1,40 @@
+{% extends 'Plantilla/Header.html' %} {% block content %} 
+{% load staticfiles %}
+
+<div class="content container">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h5>LISTA DE DISTRITOS</h5>
+		</div>
+		<table class="table table-fixed">
+			<thead>
+				<tr>
+					<th class="col-xs-3">Nombre</th>
+					<th class="col-xs-3">Provincia</th>
+					<th class="col-xs-3">Departamento</th>
+					<th class="col-xs-3">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for distrito in posts %}
+				<tr>
+					<td class="col-xs-3">{{distrito.distr_nombre}}</td>
+					<td class="col-xs-3">{{distrito.distr_provincia}}</td>
+					<td class="col-xs-3">{{distrito.distr_departamento}}</td>
+					<td class="col-xs-3"><a href="{% url "distrito" distrito.cepk_distrito  %}"><img
+							height="24" width="24" src="{% static 'images/actualizar.png' %}"></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+	<br />
+
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

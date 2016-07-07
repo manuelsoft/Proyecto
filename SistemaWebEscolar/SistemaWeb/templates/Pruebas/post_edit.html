@@ -1,0 +1,25 @@
+ {% extends 'base.html' %} 
+ {% block content %}
+<h3>Lista de Distrito</h3>
+<table class="table">
+	<tbody>
+		<th>Departamento</th>
+		<th>Provincia</th>
+		<th>Distrito</th> {% for distrito in posts %}
+		<tr>
+			<td class="active">{{distrito.distr_departamento}}</td>
+			<td class="success">{{distrito.distr_provincia}}</td>
+			<td class="warning">{{distrito.distr_nombre}}</td>
+		</tr>
+		{% endfor %}
+
+	</tbody>
+</table>
+<br/>
+<h3>Ingrese nuevo Distrito</h3>
+<form method="POST" class="post-form">
+	{% csrf_token %} 
+	{{ form.as_p }}
+	<button type="submit" class="save btn btn-default">Guardar</button>
+</form>
+{% endblock %}

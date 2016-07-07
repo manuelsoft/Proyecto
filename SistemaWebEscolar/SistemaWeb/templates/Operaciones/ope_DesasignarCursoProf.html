@@ -1,0 +1,72 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+
+		<!-- Titulos -->
+		<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px; width: 250px;">
+			<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE PROFESOR</p></div>
+		</div>
+		<!-- Fin Titulo -->
+		<br />
+		Nombres: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input class="inputText" type="text" value="{{profesor.cepk_per.per_nombres}}">
+		&nbsp &nbsp&nbsp&nbsp
+		Apellidos:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input class="inputText" type="text" value="{{profesor.cepk_per.per_apellpat}} {{profesor.cepk_per.per_apellmat}}">
+		
+		<br /><br />
+		
+		
+	
+	
+	<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>CURSOS Y GRADO-SECCION</h5>
+				</div>
+				{% if flag %}
+					<h5 style=" text-indent:15; margin-top:20;margin-bottom:20 ">
+					No tiene cursos registrados..</h5>
+				{% endif %}
+	
+				{% if flag == False %}
+				<table id="my-table" class="table table-fixed">
+					<thead>
+						<tr>
+							<th class="col-xs-2">Curso</th>
+							<th class="col-xs-2">Grado</th>
+							<th class="col-xs-2">Seccion</th>
+							<th class="col-xs-2">Nivel</th>
+							<th class="col-xs-2">Horas</th>
+							<th class="col-xs-2">Opciones</th>							
+						</tr>
+					</thead>
+					<tbody>
+						{% for det in GSCursoProf %}
+						<tr>
+							<td class="col-xs-2">{{det.cepk_detgrcur.cepk_cur.cur_nombre}}</td>
+							<td class="col-xs-2">{{det.cepk_detgrcur.cepk_gradsec.cepk_grad.grad_nombre}} </td>
+							<td class="col-xs-2">{{det.cepk_detgrcur.cepk_gradsec.cepk_secc.secc_nombre}}</td>
+							<td class="col-xs-2">{{det.cepk_detgrcur.cepk_gradsec.cepk_grad.grad_nivel}}</div></td>
+							<td class="col-xs-2">{{det.cepk_detgrcur.det_gsc_horas}}</div></td>
+							<td class="col-xs-2"><a href="{% url "DesigPC" det.ecpk_detprocur  %}"><img
+							height="24" width="24" title="Desasignar" src="{% static 'images/delete.png' %}"></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+					{% endif %}
+
+			</div>	
+
+	
+			<br />
+	{% if flag == False %}
+		<label for="kwd_search">Buscar: &nbsp</label> 
+		<input type="text" id="kwd_search" value="" style="border: 1px solid #ccc;border-radius: 4px;"/>
+	{% endif %}
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+			</div>
+{% endblock %}

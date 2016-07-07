@@ -1,0 +1,45 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+
+			<div style="text-indent:8; font-size: 16px;"><p class="text-muted">INFORMACION DE TUTOR</p></div>
+			<br />
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION PERSONAL</p></div>
+			</div>
+			<br/>
+			<!-- Fin Titulo -->	
+			Nombres: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+			<input class="inputText" type="text" value="{{tutor.cepk_per.per_nombres}} {{tutor.cepk_per.per_apellpat}}">
+			&nbsp &nbsp&nbsp
+			Apellidos:&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{tutor.cepk_per.per_apellpat}}">
+			<br/>
+			DNI: &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{tutor.cepk_per.per_dni}}">
+			&nbsp&nbsp &nbsp
+			Direccion: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{tutor.cepk_per.per_nomcalle}}">
+			<br/>
+			Distrito: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input class="inputText" type="text" value="{{tutor.cepk_per.cepk_distrito.distr_nombre}}">
+			<br /><br />
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION ACADEMICA</p></div>
+			</div>
+			<br/>
+			<!-- Fin Titulo -->	
+			Especialidad: &nbsp&nbsp&nbsp&nbsp&nbsp	
+			<input class="inputText" type="text" value="{{tutor.tut_especialidad}}">
+			&nbsp &nbsp
+			Estado: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input class="inputText" type="text" value="{{tutor.tut_estado}}" style="background-color:skyblue;">
+
+<br /><br />
+	<form method="post" class="post-form" style="margin-right:200px;">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 0px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+		<!-- .per_apellpat -->
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE SECCION</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			<br />&nbsp&nbsp
+			Seccion : &nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{seccion.secc_nombre}}">
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			Tipo : &nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{seccion.secc_tipo}}">
+			<p></p><br />
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px; ">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE GRADO</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			<br />
+			&nbsp&nbsp
+			Grado : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{grado.grad_nombre}}">
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			Nivel : &nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{grado.grad_nivel}} ">
+			
+<br /><br />
+<br />
+<form action="/elegirSeccion_DSG/" style="float:left;">
+ 	<div class="form-group">
+		     <button type="submit" class="btn btn-default">Cancelar</button>
+		  
+	</div>
+</form>
+<form action="/Asignar_DSG/" style="float:left;">
+	<div class="form-group">
+		 <div class="col-sm-offset-1 col-sm-10">
+ 		<button type="submit" class="btn btn-danger">Confirmar</button>
+ 	  </div>
+	</div>
+</form>
+
+{% endblock %}

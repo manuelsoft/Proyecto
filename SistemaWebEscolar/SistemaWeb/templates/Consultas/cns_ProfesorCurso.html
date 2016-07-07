@@ -1,0 +1,40 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+	<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>ELIGA UN PROFESOR PARA VER LOS CURSOS</h5>
+				</div>
+				<table id="my-table" class="table table-fixed">
+					<thead>
+						<tr>
+							<th class="col-xs-3">Nombre</th>
+							<th class="col-xs-3">Especialidad</th>
+							<th class="col-xs-3">Grado Academico</th>
+							<th class="col-xs-3">Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for profesor in dets %}
+						<tr>
+							<td class="col-xs-3">{{profesor.cepk_per.per_nombres}}&nbsp{{profesor.cepk_per.per_apellpat}}</td>
+							<td class="col-xs-3">{{profesor.prof_especialidad}}</td>
+							<td class="col-xs-3"><div style="margin-left: 8px;">{{profesor.porf_gacademico}}</div></td>
+							<td class="col-xs-3"><div style="margin-left: 10px;"><a href="{% url "profesorCurso" profesor.cepk_prof  %}"><img
+									height="24" width="24" src="{% static 'images/buscar.jpg' %}"></div></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+			</div>			
+			<br />
+
+		<label for="kwd_search">Buscar: &nbsp</label> 
+	<input type="text" id="kwd_search" value="" style="border: 1px solid #ccc;border-radius: 4px;"/>
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+			</div>
+{% endblock %}

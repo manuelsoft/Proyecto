@@ -1,0 +1,73 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+
+			<div class="col-md-15" >
+			
+			<div style="border:2px solid #ccc; border-radius:8px;padding-top: 10px;">
+			
+			<div style="text-indent: 10;"><p class="text-muted">INFORMACION DE PROFESOR</p></div>
+			</div>
+			<br />
+			&nbsp&nbsp
+			Nombres : &nbsp<input
+			class="inputText" type="text"
+			value="{{profesor.cepk_per.per_nombres}} {{profesor.cepk_per.per_apellpat}}">
+			&nbsp&nbsp&nbsp
+			&nbsp&nbsp
+			Especialidad : <input
+			class="inputText" type="text"
+			value="{{profesor.prof_especialidad}}">
+			
+			
+		<br />
+
+	
+<br />
+<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+
+<div style="font-size:15px;text-indent: 10;"><p class="text-muted">INFORMACION DE CURSO</p></div>
+			</div>
+		
+			<br />&nbsp&nbsp
+			Curso : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{curso.cepk_cur.cur_nombre}}">
+			&nbsp&nbsp&nbsp
+			&nbsp&nbsp
+			Grado : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{curso.cepk_gradsec.cepk_grad.grad_nombre}}">
+			
+			<br/>
+			&nbsp&nbsp
+			&nbspNivel: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value=" {{curso.cepk_gradsec.cepk_grad.grad_nivel}}">
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			Seccion: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input
+			class="inputText" type="text"
+			value="{{curso.cepk_gradsec.cepk_secc.secc_nombre}}">
+			
+			<br />
+			
+
+<br />
+<form action="/Asignar/" style="float:right;" >
+	<div class="form-group">
+		 <div class="col-sm-offset-2 col-sm-10">
+ 		<button type="submit" class="btn btn-danger">Aceptar</button>
+ 	  </div>
+	</div>
+</form>
+<form action="/elegirProfesor/" style="float:right;">
+ 	<div class="form-group">
+		     <button type="submit" class="btn btn-default">Cancelar</button>
+		  
+	</div>
+
+</form>
+
+</div>
+</div>
+{% endblock %}

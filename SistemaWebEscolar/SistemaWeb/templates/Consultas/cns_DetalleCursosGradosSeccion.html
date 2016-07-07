@@ -1,0 +1,53 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+			<div style="text-indent:8; font-size: 16px;"><p class="text-muted">INFORMACION DE CURSO GRADO SECCION REGISTRADO</p></div>
+			<br />
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION CURSO</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			<br />&nbsp
+			Nombre: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+			<input class="inputText" type="text" value="{{detalle.cepk_cur.cur_nombre}}">
+			&nbsp &nbsp&nbsp
+			Tipo Curso: &nbsp &nbsp &nbsp &nbsp &nbsp
+			<input class="inputText" type="text" value="{{detalle.cepk_cur.cur_tipo}}">
+			<br/>&nbsp
+			Estado Curso:  &nbsp &nbsp&nbsp 
+			<input class="inputText" type="text" value="{{detalle.cepk_cur.cur_testado}}" style="background-color:skyblue;">
+			
+			<br /><br />
+			
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION GRADO</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			<br />&nbsp
+			Grado: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp
+			<input class="inputText" type="text" value="{{detalle.cepk_gradsec.cepk_grad.grad_nombre}}">
+			&nbsp &nbsp
+			Tipo Grado: &nbsp &nbsp &nbsp &nbsp &nbsp
+			<input class="inputText" type="text" value="{{detalle.cepk_gradsec.cepk_grad.grad_nivel}}">
+			
+			<br /><br />
+			<!-- Titulos -->
+			<div style="border:2px solid #ccc;border-radius:8px;padding-top: 10px;">
+				<div style="text-indent: 10;"><p class="text-muted">INFORMACION SECCION</p></div>
+			</div>
+			<!-- Fin Titulo -->
+			<br />&nbsp
+			Seccion: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+			<input class="inputText" type="text" value="{{detalle.cepk_gradsec.cepk_secc.secc_nombre}}">
+			&nbsp &nbsp
+			Tipo Seccion: &nbsp &nbsp &nbsp &nbsp
+			<input class="inputText" type="text" value="{{detalle.cepk_gradsec.cepk_secc.secc_tipo}}">
+	<br /><br />		
+	<form method="post" class="post-form" style="margin-right:200px;">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 0px;">Retroceder</button>
+	</form>
+</div>
+{% endblock %}

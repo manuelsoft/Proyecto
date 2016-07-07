@@ -1,0 +1,138 @@
+ .page-header {
+        background-color: #455464;
+        margin-top: 0;
+        padding: 20px 20px 20px 40px;
+    }
+
+    /*.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+        color: #ffffff;
+        font-size: 36pt;
+        text-decoration: none;
+    }*/
+	.texto{   /*para el titulo*/
+		color: white;
+		font-family: cursive, serif;
+		font-size: 55px;
+		text-shadow: 4px 4px 4px #aaa;
+		text-indent: 25;
+	}
+	
+	.texto2{   /*para el titulo-login*/
+		color: white;
+		font-family: 'Tangerine', serif;
+		font-size: 60px;
+		text-shadow: 4px 4px 4px #aaa;
+	}	
+	
+	.boton-prueba{
+		
+		font-weight:600;
+	}
+    .content {
+        margin-left: 40px;
+    }
+
+
+    .date {
+        float: right;
+        color: #828282;
+    }
+
+    .save {
+        float: right;
+    }
+
+    .post-form textarea, .post-form input {
+        width: 100%;
+    }
+
+    .top-menu, .top-menu:hover, .top-menu:visited {
+        color: #ffffff;
+        float: right;
+        font-size: 26pt;
+        margin-right: 20px;
+    }
+
+    .post {
+        margin-bottom: 70px;
+    }
+
+    .post h1 a, .post h1 a:visited {
+        color: #000000;
+    }
+table {
+     width: 100%;
+}
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+thead th {
+    height: 30px;
+
+    /*text-align: left;*/
+}
+
+tbody {
+    height: 120px;
+    overflow-y: auto;
+}
+
+thead {
+    /* fallback */
+}
+
+
+thead th {
+    width: 33.2%;
+    float: left;
+}
+tbody td {
+    width: 33.2%;
+    float: left;
+}
+.table-fixed thead {
+  width: 100%;
+}
+.table-fixed tbody {
+  height: 240px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+.inputText{
+	width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius:5px;
+    border: 2px solid #ccc;
+    height: 36px;
+    background-color: #FFE783;
+}
+.inputTextObservacion{
+	width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius:5px;
+    border: 2px solid #ccc;
+    height: 100px;
+    background-color: #FFE783;
+    text-align: left;
+}    
+#my-table td {
+	font-size: 15px;
+}

@@ -1,0 +1,33 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+
+<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+		
+
+<div style="padding-bottom:20px; font-size:15px;"><p class="text-muted">LISTA DE AULA</p></div>
+<table class="table table-striped">
+	<thead>
+    <tr>
+		<th>Pabellon</th>
+		<th>Estado</th>
+		<th>Capacidad</th> 
+	</tr>
+    </thead>
+		<tbody>
+		{% for aula in posts %}
+		<tr>		
+			<td class="active">{{aula.aul_pabellon}}</td>
+			<td class="success">{{aula.aul_estado}}</td>
+			<td class="warning">{{aula.aul_capacidad}}</td>
+		</tr>
+		{% endfor %}
+
+	</tbody>
+</table>
+<br />
+<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+{% endblock %}

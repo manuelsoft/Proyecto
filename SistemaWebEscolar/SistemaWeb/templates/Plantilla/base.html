@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>Sistema de Gestion Escolar</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"
+	type="text/css" />
+<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}"
+	type="text/css" />
+
+<link
+	href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'css/sistema.css' %}">
+
+<script
+	src="{% static 'js/jquery.min.js'%}"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="{% static 'js/bootstrap.min.js'%}"
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="page-header">
+		<h1>Sistema de Gestion Escolar</h1>
+	</div>
+	
+{% block content %} {% endblock %}
+<div style="height:70px;">
+	</div>
+</body>
+</html>

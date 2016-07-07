@@ -1,0 +1,38 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+ <div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+		
+
+<div style="padding-bottom:20px; font-size:15px;"><p class="text-muted">LISTA DE PERFILES</p></div>
+<table class="table table-striped">
+	<thead>
+    <tr>
+		<th>Tipo</th>
+		<th>Descripcion</th>
+	</tr>
+    </thead>
+		<tbody>
+		{% for perfil in posts %}
+		<tr>		
+			<td class="active">{{perfil.perf_tperfil}}</td>
+			<td class="warning">{{perfil.perf_descripcion}}</td>
+		</tr>
+		{% endfor %}
+
+	</tbody>
+</table>
+<br />
+<div style="padding-bottom:20px; font-size:15px;"><p class="text-muted">INGRESE UN PERFIL</p></div>
+
+<form action="/newPerfil/" method="post" class="post-form">
+	{% csrf_token %}
+	{{ form.as_table }}
+	<button type="submit" class="save btn btn-default" style="margin-top:10px;">Registrar</button>
+	
+</form>
+
+	</div>
+		</div>
+	</div>
+ {% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'Plantilla/Header.html' %} {% block content %} 
+{% load staticfiles %}
+
+<div class="content container">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>LISTA DE DISTRITOS</h5>
+				</div>
+				<table class="table table-fixed">
+					<thead>
+						<tr>
+							<th class="col-xs-3">Nombre</th>
+							<th class="col-xs-3">Provincia</th>
+							<th class="col-xs-3">Departamento</th>
+							<th class="col-xs-3">Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for distrito in posts %}
+						<tr>
+							<td class="col-xs-3">{{distrito.distr_nombre}}</td>
+							<td class="col-xs-3">{{distrito.distr_provincia}}</td>
+							<td class="col-xs-3">{{distrito.distr_departamento}}</td>
+							<td class="col-xs-3"><a href="{% url "distrito" distrito.cepk_distrito  %}"><img
+									height="24" width="24"
+									src="{% static 'images/actualizar.png' %}"></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+	
+		</div>
+	<br />
+	<div class="row">
+	<div class="col-md-6">
+		<div style="padding-bottom: 20px; font-size: 15px;">
+			<p class="text-muted">INGRESE UN DISTRITO</p>
+		</div>
+		<form action="/newDistrito/" method="post" class="post-form">
+			{% csrf_token %} {{ form.as_table }}
+			<button type="submit" class="save btn btn-default"
+				style="margin-top: 10px;">Registrar</button>
+
+		</form>
+	</div>
+	</div>
+</div>
+{% endblock %}

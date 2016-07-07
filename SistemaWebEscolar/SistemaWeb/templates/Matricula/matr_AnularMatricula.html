@@ -1,0 +1,46 @@
+{% extends 'Plantilla/Header.html' %} {% block content %}
+{% load staticfiles %}
+<div class="content container">
+	
+	<div class="panel panel-default">
+	<div style="float:right;padding: 16px;">
+	<label for="kwd_search">Filtrar: &nbsp</label> <input type="text"
+		id="kwd_search" value=""
+		style="border: 1px solid #ccc; border-radius: 4px;" />
+	</div>
+		<div class="panel-heading">
+			<h5>SELECCIONE UN ALUMNO</h5>
+			
+		</div>
+		
+		<table id="my-table" class="table table-fixed">
+			<thead>
+				<tr>
+					<th class="col-xs-3">Nombre</th>
+					<th class="col-xs-3">Fecha Matricula</th>
+					<th class="col-xs-3">Estado Actual</th>
+					<th class="col-xs-3">Anular</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for matricula in matriculas %}
+				<tr>
+					<td class="col-xs-3">{{matricula.cepk_alu.cepk_per.per_nombres}}&nbsp{{matricula.cepk_alu.cepk_per.per_apellpat}}</td>
+					<td class="col-xs-3"><div style="padding-left: 10px;">{{matricula.matr_fecha}}</div></td>
+					<td class="col-xs-3"><div style="padding-left: 15px;">{{matricula.matr_estado}}</div></td>
+					<td class="col-xs-3"><a href="{% url "anular_matricula" matricula.cepk_alu.cepk_alu  matricula.cepk_matr  %}" style="margin-left:25px;"><img
+							height="24" width="24" src="{% static 'images/delete.png' %}"></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+	<form method="post" class="post-form">
+		<button type="submit" class="save btn btn-default"
+			onClick="history.go(-1);return true;" style="margin-top: 10px;">Retroceder</button>
+	</form>
+	
+</div>
+{% endblock %}
